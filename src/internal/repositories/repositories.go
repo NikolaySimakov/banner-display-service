@@ -1,6 +1,7 @@
 package repositories
 
 import (
+	"banner-display-service/src/internal/models"
 	"banner-display-service/src/internal/repositories/db"
 	"banner-display-service/src/pkg/postgres"
 	"context"
@@ -17,8 +18,9 @@ type Feature interface {
 }
 
 type Banner interface {
-	GetBanner(ctx context.Context, bannerId int) error
-	CreateBanner(ctx context.Context, tag int, feature int) error
+	GetAllBanners(ctx context.Context) error
+	GetUserBanner(ctx context.Context, bannerId int) error
+	CreateBanner(ctx context.Context, banner *models.CreateBannerInput) error
 	UpdateBanner(ctx context.Context, tag int, feature int) error
 	DeleteBanner(ctx context.Context) error
 }

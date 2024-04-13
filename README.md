@@ -18,3 +18,48 @@ The following technologies were used in the project:
 - Docker (to start the service)
 - Swagger (for API documentation)
 - Echo (web framework)
+
+### Life cicle
+
+Create one feature:
+
+POST: `http://localhost:8080/api/v1/features/`
+
+```json
+{
+	"name": "90348094"
+}
+```
+
+Create tags:
+
+POST: `http://localhost:8080/api/v1/tags/`
+
+```json
+{
+	"name": "34230489"
+}
+
+{
+	"name": "04359903285"
+}
+
+{
+	"name": "23094809832"
+}
+```
+
+Create banner note:
+
+POST: `http://localhost:8080/api/v1/banners/`
+
+```json
+{
+	"title": "qwerty",
+	"text": "we;kmewlkf;m lwf,m l,mw",
+	"url": "wlkfmlwkemlmw",
+	"feature": 0,
+	"tag": [0, 1, 2],
+	"active": true
+}
+```

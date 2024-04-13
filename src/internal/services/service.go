@@ -1,16 +1,21 @@
 package services
 
 import (
+	"banner-display-service/src/internal/models"
 	"banner-display-service/src/internal/repositories"
 	"context"
 )
 
-type GetBannerInput struct {
+type BannerInput struct {
 	Id int
 }
 
 type Banner interface {
-	GetBanner(ctx context.Context, input GetBannerInput) error
+	GetAllBanners(ctx context.Context) error
+	GetUserBanner(ctx context.Context, input BannerInput) error
+	CreateBanner(ctx context.Context, input *models.CreateBannerInput) error
+	UpdateBanner(ctx context.Context, input BannerInput) error
+	DeleteBanner(ctx context.Context, input BannerInput) error
 }
 
 type TagInput struct {

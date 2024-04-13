@@ -50,7 +50,7 @@ func (t *tagRoutes) create(c echo.Context) error {
 		return err
 	}
 
-	return c.JSON(http.StatusCreated, createTagResponse{
+	return c.JSON(http.StatusCreated, &createTagResponse{
 		Name: input.Name,
 	})
 }

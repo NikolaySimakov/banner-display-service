@@ -23,6 +23,6 @@ func NewRouter(handler *echo.Echo, services *services.Services) {
 	{
 		newTagRoutes(v1.Group("/tags"), services.Tag)
 		newFeatureRoutes(v1.Group("/features"), services.Feature)
-		// newHistoryRoutes(v1.Group("/history"), services.History)
+		newBannerRoutes(v1.Group("/banners"), services.Banner)
 	}
 }

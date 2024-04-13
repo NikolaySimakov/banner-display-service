@@ -50,7 +50,7 @@ func (f *featureRoutes) create(c echo.Context) error {
 		return err
 	}
 
-	return c.JSON(http.StatusCreated, createFeatureResponse{
+	return c.JSON(http.StatusCreated, &createFeatureResponse{
 		Name: input.Name,
 	})
 }
