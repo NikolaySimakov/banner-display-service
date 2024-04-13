@@ -18,7 +18,7 @@ type Feature interface {
 }
 
 type Banner interface {
-	GetAllBanners(ctx context.Context) error
+	GetAllBanners(ctx context.Context) ([]models.BannerResponse, error)
 	GetUserBanner(ctx context.Context, bannerId int) error
 	CreateBanner(ctx context.Context, banner *models.CreateBannerInput) error
 	UpdateBanner(ctx context.Context, tag int, feature int) error

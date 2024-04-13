@@ -11,7 +11,7 @@ type BannerInput struct {
 }
 
 type Banner interface {
-	GetAllBanners(ctx context.Context) error
+	GetAllBanners(ctx context.Context) ([]models.BannerResponse, error)
 	GetUserBanner(ctx context.Context, input BannerInput) error
 	CreateBanner(ctx context.Context, input *models.CreateBannerInput) error
 	UpdateBanner(ctx context.Context, input BannerInput) error

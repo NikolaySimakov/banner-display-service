@@ -23,7 +23,14 @@ func newBannerRoutes(g *echo.Group, bannerService services.Banner) {
 
 
 func (b *bannerRoutes) readAll(c echo.Context) error {
-	return nil
+	banners, err := b.bannerService.GetAllBanners(c.Request().Context())
+
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, "internal server error")
+		return err
+	}
+
+	return c.JSON(http.StatusOK, banners)
 }
 
 type createBannerInput struct {

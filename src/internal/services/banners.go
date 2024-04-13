@@ -16,8 +16,14 @@ func NewBannerService(bannerRepo repositories.Banner) *BannerService {
 	}
 }
 
-func (bs *BannerService) GetAllBanners(ctx context.Context) error {
-	return nil
+func (bs *BannerService) GetAllBanners(ctx context.Context) ([]models.BannerResponse, error) {
+	banners, err := bs.bannerRepo.GetAllBanners(ctx)
+
+	if err != nil {
+		return nil, err
+	}
+
+	return banners, nil
 }
 
 func (bs *BannerService) GetUserBanner(ctx context.Context, input BannerInput) error {
