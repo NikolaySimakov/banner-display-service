@@ -19,7 +19,7 @@ func NewFeatureService(featureRepo repositories.Feature) *FeatureService {
 }
 
 func (fs *FeatureService) CreateFeature(ctx context.Context, input FeatureInput) error {
-	err := fs.featureRepo.CreateFeature(ctx, input.name)
+	err := fs.featureRepo.CreateFeature(ctx, input.Name)
 	if err != nil {
 		fmt.Println(err)
 		return nil
@@ -29,7 +29,7 @@ func (fs *FeatureService) CreateFeature(ctx context.Context, input FeatureInput)
 
 func (fs *FeatureService) DeleteFeature(ctx context.Context, input FeatureInput) error {
 	
-	err := fs.featureRepo.DeleteFeature(ctx, input.name)
+	err := fs.featureRepo.DeleteFeature(ctx, input.Name)
 
 	if err != nil {
 		if errors.Is(err, errs.ErrNotFound) {

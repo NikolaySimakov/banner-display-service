@@ -19,7 +19,7 @@ func NewTagService(tagRepo repositories.Tag) *TagService {
 }
 
 func (ts *TagService) CreateTag(ctx context.Context, input TagInput) error {
-	err := ts.tagRepo.CreateTag(ctx, input.name)
+	err := ts.tagRepo.CreateTag(ctx, input.Name)
 	if err != nil {
 		fmt.Println(err)
 		return nil
@@ -29,7 +29,7 @@ func (ts *TagService) CreateTag(ctx context.Context, input TagInput) error {
 
 func (ts *TagService) DeleteTag(ctx context.Context, input TagInput) error {
 
-	err := ts.tagRepo.DeleteTag(ctx, input.name)
+	err := ts.tagRepo.DeleteTag(ctx, input.Name)
 
 	if err != nil {
 		if errors.Is(err, errs.ErrNotFound) {

@@ -14,7 +14,7 @@ type Banner interface {
 }
 
 type TagInput struct {
-	name string
+	Name string
 }
 
 type Tag interface {
@@ -23,7 +23,7 @@ type Tag interface {
 }
 
 type FeatureInput struct {
-	name string
+	Name string
 }
 
 type Feature interface {
