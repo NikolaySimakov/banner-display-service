@@ -5,7 +5,6 @@ import (
 	"banner-display-service/src/internal/repositories/errs"
 	"context"
 	"errors"
-	"fmt"
 )
 
 type FeatureService struct {
@@ -21,7 +20,6 @@ func NewFeatureService(featureRepo repositories.Feature) *FeatureService {
 func (fs *FeatureService) CreateFeature(ctx context.Context, input FeatureInput) error {
 	err := fs.featureRepo.CreateFeature(ctx, input.Name)
 	if err != nil {
-		fmt.Println(err)
 		return nil
 	}
 	return nil

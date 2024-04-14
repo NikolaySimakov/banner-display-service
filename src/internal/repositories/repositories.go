@@ -18,9 +18,8 @@ type Feature interface {
 }
 
 type Banner interface {
-	GetAllBanners(ctx context.Context) ([]models.BannerResponse, error)
-	GetAllActiveBanners(ctx context.Context) ([]models.BannerResponse, error)
-	GetUserBanner(ctx context.Context, bannerId int) error
+	GetAdminBanners(ctx context.Context, tagId int, featureId int, limit int64, offset int64) ([]models.BannerResponse, error)
+	GetUserBanners(ctx context.Context, tagId int, featureId int, useLastRevision bool) ([]models.BannerResponse, error)
 	CreateBanner(ctx context.Context, banner *models.CreateBannerInput) error
 	UpdateBanner(ctx context.Context, tag int, feature int) error
 	DeleteBanner(ctx context.Context, featureId int, tagId int) error

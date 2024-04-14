@@ -20,16 +20,38 @@ func NewBannerRepo(pg *postgres.Postgres) *BannerRepository {
 	return &BannerRepository{pg}
 }
 
-func (br *BannerRepository) GetAllBanners(ctx context.Context) ([]models.BannerResponse, error) {
-	sql, args, _ := br.Builder.
-		Select("id", "title", "text", "url", "created_at", "updated_at", 
-		"last_version", "is_active", "tag_id", "feature_id").
-		From("banners").
-		ToSql()
+func (br *BannerRepository) GetAdminBanners(
+	ctx context.Context, 
+	tagId int, 
+	featureId int, 
+	limit int64, 
+	offset int64) ([]models.BannerResponse, error) {
+	query := br.Builder.
+        Select("id", "title", "text", "url", "created_at", "updated_at", 
+        "last_version", "is_active", "tag_id", "feature_id").
+        From("banners")
+
+    if tagId != -1 {
+        query = query.Where("? = ANY(tag_id)", tagId)
+    }
+    if featureId != -1 {
+        query = query.Where("feature_id = ?", featureId)
+    }
+    if limit != -1 {
+        query = query.Limit(uint64(limit))
+    }
+    if offset != -1 {
+        query = query.Offset(uint64(offset))
+    }
+
+    sql, args, err := query.ToSql()
+    if err != nil {
+        return nil, err
+    }
 
 	rows, err := br.Pool.Query(ctx, sql, args...)
 	if err != nil {
-		return nil, fmt.Errorf("BannerRepository.GetAllBanners - r.Pool.Query: %v", err)
+		return nil, fmt.Errorf("BannerRepository.GetAdminBanners - r.Pool.Query: %v", err)
 	}
 	defer rows.Close()
 
@@ -48,24 +70,25 @@ func (br *BannerRepository) GetAllBanners(ctx context.Context) ([]models.BannerR
 			&banner.TagId,
 			&banner.FeatureId)
 		if err != nil {
-			return nil, fmt.Errorf("BannerRepository.GetAllBanners - rows.Scan: %v", err)
+			return nil, fmt.Errorf("BannerRepository.GetAdminBanners - rows.Scan: %v", err)
 		}
 		banners = append(banners, banner)
 	}
 	return banners, nil
 }
 
-func (br *BannerRepository) GetAllActiveBanners(ctx context.Context) ([]models.BannerResponse, error) {
+func (br *BannerRepository) GetUserBanners(ctx context.Context, tagId int, featureId int, useLastRevision bool) ([]models.BannerResponse, error) {
 	sql, args, _ := br.Builder.
 		Select("id", "title", "text", "url", "created_at", "updated_at", 
 		"last_version", "is_active", "tag_id", "feature_id").
 		From("banners").
-		Where("is_active = true").
+		Where("is_active = true AND ? = ANY(tag_id) AND feature_id = ? AND last_version = ?", tagId, featureId, useLastRevision).
 		ToSql()
 
 	rows, err := br.Pool.Query(ctx, sql, args...)
 	if err != nil {
-		return nil, fmt.Errorf("BannerRepository.GetAllBanners - r.Pool.Query: %v", err)
+		fmt.Println(err)
+		return nil, fmt.Errorf("BannerRepository.GetUserBanners - r.Pool.Query: %v", err)
 	}
 	defer rows.Close()
 
@@ -84,16 +107,11 @@ func (br *BannerRepository) GetAllActiveBanners(ctx context.Context) ([]models.B
 			&banner.TagId,
 			&banner.FeatureId)
 		if err != nil {
-			return nil, fmt.Errorf("BannerRepository.GetAllBanners - rows.Scan: %v", err)
+			return nil, fmt.Errorf("BannerRepository.GetUserBanners - rows.Scan: %v", err)
 		}
 		banners = append(banners, banner)
 	}
 	return banners, nil
-}
-
-func (br *BannerRepository) GetUserBanner(ctx context.Context, bannerId int) error {
-	// TODO
-	return nil
 }
 
 func (br *BannerRepository) CreateBanner(ctx context.Context, banner *models.CreateBannerInput) error {

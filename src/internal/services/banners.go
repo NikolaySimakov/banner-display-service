@@ -3,7 +3,9 @@ package services
 import (
 	"banner-display-service/src/internal/models"
 	"banner-display-service/src/internal/repositories"
+	"banner-display-service/src/internal/repositories/errs"
 	"context"
+	"errors"
 )
 
 type BannerService struct {
@@ -16,16 +18,8 @@ func NewBannerService(bannerRepo repositories.Banner) *BannerService {
 	}
 }
 
-func (bs *BannerService) GetAllBanners(ctx context.Context, userStatus string) ([]models.BannerResponse, error) {
-
-	var banners []models.BannerResponse
-	var err error
-
-	if userStatus == "admin" {
-		banners, err = bs.bannerRepo.GetAllBanners(ctx)
-	} else if userStatus == "user" {
-		banners, err = bs.bannerRepo.GetAllActiveBanners(ctx)
-	}
+func (bs *BannerService) GetAdminBanners(ctx context.Context, tagId int, featureId int, limit int64, offset int64) ([]models.BannerResponse, error) {
+	banners, err := bs.bannerRepo.GetAdminBanners(ctx, tagId, featureId, limit, offset)
 
 	if err != nil {
 		return nil, err
@@ -34,8 +28,14 @@ func (bs *BannerService) GetAllBanners(ctx context.Context, userStatus string) (
 	return banners, nil
 }
 
-func (bs *BannerService) GetUserBanner(ctx context.Context, input BannerInput) error {
-	return nil
+func (bs *BannerService) GetUserBanners(ctx context.Context, tagId int, featureId int, useLastRevision bool) ([]models.BannerResponse, error) {
+	banners, err := bs.bannerRepo.GetUserBanners(ctx, tagId, featureId, useLastRevision)
+
+	if err != nil {
+		return nil, err
+	}
+
+	return banners, nil
 }
 
 func (bs *BannerService) CreateBanner(ctx context.Context, input *models.CreateBannerInput) error {
@@ -56,6 +56,9 @@ func (bs *BannerService) DeleteBanner(ctx context.Context, featureId int, tagId 
 	err := bs.bannerRepo.DeleteBanner(ctx, featureId, tagId)
 
 	if err != nil {
+		if errors.Is(err, errs.ErrNotFound) {
+			return errs.ErrNotFound
+		}
 		return err
 	}
 

@@ -3,7 +3,9 @@ package v1
 import (
 	"banner-display-service/src/internal/models"
 	"banner-display-service/src/internal/services"
+	"fmt"
 	"net/http"
+	"strconv"
 
 	"github.com/labstack/echo"
 )
@@ -18,16 +20,16 @@ func newBannerRoutes(g *echo.Group, bannerService services.Banner, authService s
 		bannerService: bannerService,
 		authService: authService,
 	}
-	g.GET("/", r.readAll)
-	g.GET("/:id", r.read)
+	g.GET("/banner", r.getAdminBanner)
+	g.GET("/user_banner", r.getUserBanner)
 	g.POST("/", r.create)
 	g.DELETE("/", r.delete)
 }
 
 
-func (b *bannerRoutes) readAll(c echo.Context) error {
+func (b *bannerRoutes) getAdminBanner(c echo.Context) error {
 
-	// token := c.QueryParam("token")
+	// check user & admin token
 	token := c.Request().Header.Get("token")
 	if token == "" {
 		newErrorResponse(c, http.StatusInternalServerError, ErrCannotParseToken.Error())
@@ -35,12 +37,34 @@ func (b *bannerRoutes) readAll(c echo.Context) error {
 	}
 
 	userStatus, err := b.authService.TokenExist(c.Request().Context(), token)
-	if err != nil || !(userStatus == "admin" || userStatus == "user") {
+	if err != nil || userStatus != "admin" {
 		newErrorResponse(c, http.StatusInternalServerError, ErrInvalidAuthHeader.Error())
 		return ErrInvalidAuthHeader
 	}
 
-	banners, err := b.bannerService.GetAllBanners(c.Request().Context(), userStatus)
+	tagId := c.QueryParam("tag_id")
+	featureId := c.QueryParam("feature_id")
+	limit := c.QueryParam("limit")
+	offset := c.QueryParam("offset")
+
+	tagIdInt, tagErr := strconv.Atoi(tagId)
+	featureIdInt, featureErr := strconv.Atoi(featureId)
+	limitInt, limitErr := strconv.ParseInt(limit, 10, 64)
+	offsetInt, offsetErr := strconv.ParseInt(offset, 10, 64)
+	if tagErr != nil {
+		tagIdInt = -1
+	}
+	if featureErr != nil {
+		featureIdInt = -1
+	}
+	if limitErr != nil {
+		limitInt = -1
+	}
+	if offsetErr != nil {
+		offsetInt = -1
+	}
+
+	banners, err := b.bannerService.GetAdminBanners(c.Request().Context(), tagIdInt, featureIdInt, limitInt, offsetInt)
 	if err != nil {
 		newErrorResponse(c, http.StatusInternalServerError, "internal server error")
 		return err
@@ -49,8 +73,46 @@ func (b *bannerRoutes) readAll(c echo.Context) error {
 	return c.JSON(http.StatusOK, banners)
 }
 
-func (b *bannerRoutes) read(c echo.Context) error {
-	return nil
+func (b *bannerRoutes) getUserBanner(c echo.Context) error {
+
+	// check user & admin token
+	token := c.Request().Header.Get("token")
+	if token == "" {
+		newErrorResponse(c, http.StatusInternalServerError, ErrCannotParseToken.Error())
+		return ErrCannotParseToken
+	}
+
+	userStatus, err := b.authService.TokenExist(c.Request().Context(), token)
+	if err != nil || userStatus != "user" {
+		newErrorResponse(c, http.StatusInternalServerError, ErrInvalidAuthHeader.Error())
+		return ErrInvalidAuthHeader
+	}
+
+	tagId := c.QueryParam("tag_id")
+	featureId := c.QueryParam("feature_id")
+	useLastRevision := c.QueryParam("use_last_revision")
+
+	tagIdInt, tagErr := strconv.Atoi(tagId)
+	featureIdInt, featureErr := strconv.Atoi(featureId)
+	useLastRevisionBool, useLastRevisionErr := strconv.ParseBool(useLastRevision)
+	if tagErr != nil || featureErr != nil {
+		newErrorResponse(c, http.StatusInternalServerError, "internal server error")
+		return err
+	}
+
+	if useLastRevisionErr != nil {
+		useLastRevisionBool = false
+	}
+
+	fmt.Println(tagIdInt, featureIdInt, useLastRevisionBool)
+
+	banners, err := b.bannerService.GetUserBanners(c.Request().Context(), tagIdInt, featureIdInt, useLastRevisionBool)
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, "internal server error")
+		return err
+	}
+
+	return c.JSON(http.StatusOK, banners)
 }
 
 type createBannerInput struct {
