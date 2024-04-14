@@ -1,0 +1,204 @@
+{"time":"2024-04-14T12:36:21.371782+03:00", "method":"POST","uri":"/api/v1/banners/", "status":200,"error":""}
+{"time":"2024-04-14T12:56:12.365629+03:00", "method":"DELETE","uri":"/api/v1/banners/", "status":500,"error":"SegmentRepo.DeleteSegment - s.Pool.QueryRow: ERROR: syntax error at or near "ANY" (SQLSTATE 42601)"}
+{"time":"2024-04-14T12:58:34.634451+03:00", "method":"DELETE","uri":"/api/v1/banners/", "status":500,"error":"BannerRepo.DeleteBanner - br.Pool.Exec: ERROR: syntax error at or near "ANY" (SQLSTATE 42601)"}
+{"time":"2024-04-14T12:59:53.902948+03:00", "method":"DELETE","uri":"/api/v1/banners/", "status":500,"error":"BannerRepo.DeleteBanner - br.Pool.Exec: ERROR: column "feature_id" does not exist (SQLSTATE 42703)"}
+{"time":"2024-04-14T13:01:37.752564+03:00", "method":"DELETE","uri":"/api/v1/banners/", "status":500,"error":"BannerRepo.DeleteBanner - br.Pool.Exec: ERROR: syntax error at or near "tag_id" (SQLSTATE 42601)"}
+{"time":"2024-04-14T13:02:07.240813+03:00", "method":"DELETE","uri":"/api/v1/banners/", "status":500,"error":"BannerRepo.DeleteBanner - br.Pool.Exec: ERROR: syntax error at or near "tag_id" (SQLSTATE 42601)"}
+{"time":"2024-04-14T13:04:06.00281+03:00", "method":"DELETE","uri":"/api/v1/banners/", "status":500,"error":"BannerRepo.DeleteBanner - br.Pool.Exec: ERROR: column "feature_id" does not exist (SQLSTATE 42703)"}
+{"time":"2024-04-14T13:05:54.321505+03:00", "method":"DELETE","uri":"/api/v1/banners/", "status":204,"error":""}
+{"time":"2024-04-14T14:50:34.667104+03:00", "method":"GET","uri":"/api/v1/banners/", "status":401,"error":""}
+{"time":"2024-04-14T15:40:11.115291+03:00", "method":"GET","uri":"/api/v1/banners/", "status":401,"error":""}
+{"time":"2024-04-14T15:40:17.911136+03:00", "method":"GET","uri":"/api/v1/banners/", "status":401,"error":""}
+{"time":"2024-04-14T16:17:10.711995+03:00", "method":"GET","uri":"/api/v1/banners/", "status":200,"error":""}
+{"time":"2024-04-14T16:17:23.13319+03:00", "method":"GET","uri":"/api/v1/banners?token=wnlknw", "status":404,"error":"code=404, message=Not Found"}
+{"time":"2024-04-14T16:18:08.495136+03:00", "method":"GET","uri":"/api/v1/banners", "status":404,"error":"code=404, message=Not Found"}
+{"time":"2024-04-14T16:18:13.048253+03:00", "method":"GET","uri":"/api/v1/banners", "status":404,"error":"code=404, message=Not Found"}
+{"time":"2024-04-14T16:18:20.263683+03:00", "method":"GET","uri":"/api/v1/banners", "status":404,"error":"code=404, message=Not Found"}
+{"time":"2024-04-14T16:18:22.610978+03:00", "method":"GET","uri":"/api/v1/banners/", "status":200,"error":""}
+{"time":"2024-04-14T16:18:29.717258+03:00", "method":"GET","uri":"/api/v1/banners/?token=ewjfjlwef", "status":200,"error":""}
+{"time":"2024-04-14T16:18:33.256555+03:00", "method":"GET","uri":"/api/v1/banners/?token=ewjfjlwef", "status":200,"error":""}
+{"time":"2024-04-14T16:18:49.999045+03:00", "method":"GET","uri":"/api/v1/auth/", "status":404,"error":"code=404, message=Not Found"}
+{"time":"2024-04-14T16:19:17.649996+03:00", "method":"POST","uri":"/api/v1/auth/", "status":500,"error":""}
+{"time":"2024-04-14T16:23:49.027393+03:00", "method":"POST","uri":"/api/v1/auth/", "status":500,"error":""}
+{"time":"2024-04-14T16:26:30.198896+03:00", "method":"POST","uri":"/api/v1/auth/", "status":500,"error":""}
+{"time":"2024-04-14T16:28:11.237914+03:00", "method":"POST","uri":"/api/v1/auth/", "status":500,"error":""}
+{"time":"2024-04-14T16:28:29.449818+03:00", "method":"POST","uri":"/api/v1/auth/", "status":500,"error":""}
+{"time":"2024-04-14T16:30:25.771106+03:00", "method":"POST","uri":"/api/v1/auth/", "status":200,"error":""}
+{"time":"2024-04-14T16:40:13.826386+03:00", "method":"GET","uri":"/api/v1/banners/?token=2cd38435c3e08658a18ad97b3f1d83419857955fce336d7d868098652e0957f5", "status":200,"error":""}
+{"time":"2024-04-14T16:45:57.235545+03:00", "method":"GET","uri":"/api/v1/banners/?token=2cd38435c3e08658a18ad97b3f1d83419857955fce336d7d868098652e0957f5", "status":200,"error":""}
+{"time":"2024-04-14T17:06:36.753768+03:00", "method":"GET","uri":"/api/v1/banners/?token=2cd38435c3e08658a18ad97b3f1d83419857955fce336d7d868098652e0957f", "status":500,"error":"AuthRepository.TokenExist - u.Pool.QueryRow: no rows in result set"}
+{"time":"2024-04-14T17:06:43.38167+03:00", "method":"GET","uri":"/api/v1/banners/?token=2cd38435c3e08658a18ad97b3f1d83419857955fce336d7d868098652e0957f5", "status":200,"error":""}
+{"time":"2024-04-14T17:07:24.823522+03:00", "method":"GET","uri":"/api/v1/banners/?token=2cd38435c3e08658a18ad97b3f1d83419857955fce336d7d868098652e0957f", "status":500,"error":"invalid auth token"}
+{"time":"2024-04-14T17:07:27.731023+03:00", "method":"GET","uri":"/api/v1/banners/?token=2cd38435c3e08658a18ad97b3f1d83419857955fce336d7d868098652e0957f5", "status":200,"error":""}
+{"time":"2024-04-14T17:07:37.793279+03:00", "method":"POST","uri":"/api/v1/auth/", "status":200,"error":""}
+{"time":"2024-04-14T17:07:54.628438+03:00", "method":"GET","uri":"/api/v1/banners/?token=55f6eae4fd2bf89a63ce2cefa79e351d8c768fb51820d7b5fd9e246d7f0ffff8", "status":200,"error":""}
+{"time":"2024-04-14T17:09:21.722188+03:00", "method":"GET","uri":"/api/v1/banners/?token=55f6eae4fd2bf89a63ce2cefa79e351d8c768fb51820d7b5fd9e246d7f0ffff8", "status":200,"error":""}
+{"time":"2024-04-14T17:11:42.846688+03:00", "method":"GET","uri":"/api/v1/banners/?token=55f6eae4fd2bf89a63ce2cefa79e351d8c768fb51820d7b5fd9e246d7f0ffff8", "status":200,"error":""}
+{"time":"2024-04-14T17:11:55.826608+03:00", "method":"GET","uri":"/api/v1/banners/?token=55f6eae4fd2bf89a63ce2cefa79e351d8c768fb51820d7b5fd9e246d7f0ffff8", "status":200,"error":""}
+{"time":"2024-04-14T17:43:57.11258+03:00", "method":"GET","uri":"/api/v1/features/", "status":404,"error":"code=404, message=Not Found"}
+{"time":"2024-04-14T17:44:21.097854+03:00", "method":"POST","uri":"/api/v1/features/", "status":500,"error":"cannot parse API key"}
+{"time":"2024-04-14T17:44:39.038356+03:00", "method":"POST","uri":"/api/v1/features/", "status":500,"error":"invalid auth token"}
+{"time":"2024-04-14T17:44:48.086724+03:00", "method":"POST","uri":"/api/v1/features/", "status":201,"error":""}
+{"time":"2024-04-14T17:45:57.614028+03:00", "method":"POST","uri":"/api/v1/tags/", "status":201,"error":""}
+{"time":"2024-04-14T17:46:06.069949+03:00", "method":"POST","uri":"/api/v1/tags/", "status":500,"error":"invalid auth token"}
+{"time":"2024-04-14T19:03:19.611615+03:00", "method":"POST","uri":"/api/v1/tags/", "status":201,"error":""}
+{"time":"2024-04-14T19:12:32.809684+03:00", "method":"GET","uri":"/api/v1/banners/", "status":200,"error":""}
+{"time":"2024-04-14T19:12:40.922313+03:00", "method":"GET","uri":"/api/v1/banners/123", "status":200,"error":""}
+{"time":"2024-04-14T20:29:48.898717+03:00", "method":"GET","uri":"/api/v1/banners/banner", "status":500,"error":"invalid auth token"}
+{"time":"2024-04-14T20:34:05.32358+03:00", "method":"GET","uri":"/api/v1/banners/banner", "status":200,"error":""}
+{"time":"2024-04-14T20:34:20.275601+03:00", "method":"GET","uri":"/api/v1/banners/banner?limit=2", "status":200,"error":""}
+{"time":"2024-04-14T20:34:26.474952+03:00", "method":"GET","uri":"/api/v1/banners/banner?limit=1", "status":200,"error":""}
+{"time":"2024-04-14T20:34:39.96084+03:00", "method":"GET","uri":"/api/v1/banners/banner?limit=1&offset=1", "status":200,"error":""}
+{"time":"2024-04-14T20:34:48.265425+03:00", "method":"GET","uri":"/api/v1/banners/banner?limit=1&offset=0", "status":200,"error":""}
+{"time":"2024-04-14T20:35:06.891144+03:00", "method":"GET","uri":"/api/v1/banners/banner?limit=1&offset=0&tag_id=2", "status":200,"error":""}
+{"time":"2024-04-14T20:35:18.047632+03:00", "method":"GET","uri":"/api/v1/banners/banner?limit=1&offset=0&tag_id=4", "status":200,"error":""}
+{"time":"2024-04-14T20:35:27.466427+03:00", "method":"GET","uri":"/api/v1/banners/banner?tag_id=4", "status":200,"error":""}
+{"time":"2024-04-14T20:36:01.001179+03:00", "method":"GET","uri":"/api/v1/banners/banner?tag_id=4", "status":200,"error":""}
+{"time":"2024-04-14T20:38:37.76792+03:00", "method":"GET","uri":"/api/v1/banners/banner?tag_id=4", "status":200,"error":""}
+{"time":"2024-04-14T20:39:08.238018+03:00", "method":"GET","uri":"/api/v1/banners/banner?tag_id=4", "status":200,"error":""}
+{"time":"2024-04-14T20:39:23.379433+03:00", "method":"GET","uri":"/api/v1/banners/banner?tag_id=4", "status":200,"error":""}
+{"time":"2024-04-14T20:40:18.68678+03:00", "method":"GET","uri":"/api/v1/banners/banner?tag_id=4", "status":200,"error":""}
+{"time":"2024-04-14T20:42:30.015545+03:00", "method":"GET","uri":"/api/v1/banners/banner?tag_id=4", "status":200,"error":""}
+{"time":"2024-04-14T20:42:46.839056+03:00", "method":"GET","uri":"/api/v1/banners/banner?limit=2", "status":200,"error":""}
+{"time":"2024-04-14T20:42:52.055393+03:00", "method":"GET","uri":"/api/v1/banners/banner?limit=1", "status":200,"error":""}
+{"time":"2024-04-14T20:42:55.374454+03:00", "method":"GET","uri":"/api/v1/banners/banner?limit=3", "status":200,"error":""}
+{"time":"2024-04-14T20:43:10.130263+03:00", "method":"GET","uri":"/api/v1/banners/banner?offset=1&limit=3", "status":200,"error":""}
+{"time":"2024-04-14T20:43:20.667722+03:00", "method":"GET","uri":"/api/v1/banners/banner?offset=2&limit=3", "status":200,"error":""}
+{"time":"2024-04-14T20:43:27.617896+03:00", "method":"GET","uri":"/api/v1/banners/banner?offset=0&limit=3", "status":200,"error":""}
+{"time":"2024-04-14T20:44:03.980919+03:00", "method":"GET","uri":"/api/v1/banners/banner?offset=0&limit=3&feature_id=2", "status":200,"error":""}
+{"time":"2024-04-14T20:44:18.854034+03:00", "method":"GET","uri":"/api/v1/banners/banner?offset=0&limit=3&feature_id=1", "status":200,"error":""}
+{"time":"2024-04-14T20:44:29.940282+03:00", "method":"GET","uri":"/api/v1/banners/banner?offset=0&limit=3&feature_id=2", "status":200,"error":""}
+{"time":"2024-04-14T20:44:35.528326+03:00", "method":"GET","uri":"/api/v1/banners/banner?offset=0&limit=3&feature_id=3", "status":200,"error":""}
+{"time":"2024-04-14T20:54:57.01759+03:00", "method":"GET","uri":"/api/v1/banners/user_banner?tag_id=2&feature_id=3", "status":500,"error":"invalid auth token"}
+{"time":"2024-04-14T20:54:59.912065+03:00", "method":"GET","uri":"/api/v1/banners/user_banner?tag_id=2&feature_id=2", "status":500,"error":"invalid auth token"}
+{"time":"2024-04-14T20:55:05.723267+03:00", "method":"GET","uri":"/api/v1/banners/user_banner?tag_id=2&feature_id=1", "status":500,"error":"invalid auth token"}
+{"time":"2024-04-14T20:55:25.36559+03:00", "method":"GET","uri":"/api/v1/banners/user_banner?tag_id=2&feature_id=1", "status":500,"error":"invalid auth token"}
+{"time":"2024-04-14T20:56:19.779293+03:00", "method":"GET","uri":"/api/v1/banners/user_banner?tag_id=2&feature_id=1", "status":500,"error":"invalid auth token"}
+{"time":"2024-04-14T20:59:06.734942+03:00", "method":"GET","uri":"/api/v1/banners/user_banner?tag_id=2&feature_id=1", "status":500,"error":"invalid auth token"}
+{"time":"2024-04-14T20:59:22.612799+03:00", "method":"GET","uri":"/api/v1/banners/user_banner?tag_id=2&feature_id=1", "status":500,"error":"BannerRepository.GetUserBanners - r.Pool.Query: ERROR: column "use_last_revision" does not exist (SQLSTATE 42703)"}
+{"time":"2024-04-14T20:59:33.190127+03:00", "method":"GET","uri":"/api/v1/banners/user_banner?tag_id=2&feature_id=1", "status":500,"error":"BannerRepository.GetUserBanners - r.Pool.Query: ERROR: column "use_last_revision" does not exist (SQLSTATE 42703)"}
+{"time":"2024-04-14T21:00:12.726994+03:00", "method":"GET","uri":"/api/v1/banners/user_banner?tag_id=2&feature_id=1", "status":500,"error":"BannerRepository.GetUserBanners - r.Pool.Query: ERROR: column "use_last_revision" does not exist (SQLSTATE 42703)"}
+{"time":"2024-04-14T21:10:40.282827+03:00", "method":"GET","uri":"/api/v1/banners/user_banner?tag_id=2&feature_id=2", "status":500,"error":"BannerRepository.GetUserBanners - r.Pool.Query: ERROR: column "use_last_revision" does not exist (SQLSTATE 42703)"}
+{"time":"2024-04-14T21:12:38.737942+03:00", "method":"GET","uri":"/api/v1/banners/user_banner?tag_id=2&feature_id=2", "status":500,"error":"BannerRepository.GetUserBanners - r.Pool.Query: ERROR: column "use_last_revision" does not exist (SQLSTATE 42703)"}
+{"time":"2024-04-14T21:16:39.291644+03:00", "method":"GET","uri":"/api/v1/banners/user_banner?tag_id=2&feature_id=2", "status":200,"error":""}
+{"time":"2024-04-14T21:17:51.371135+03:00", "method":"GET","uri":"/api/v1/banners/user_banner?tag_id=2&feature_id=2&use_last_revision=false", "status":200,"error":""}
+{"time":"2024-04-14T21:17:55.696456+03:00", "method":"GET","uri":"/api/v1/banners/user_banner?tag_id=2&feature_id=2&use_last_revision=true", "status":200,"error":""}
+{"time":"2024-04-14T21:22:07.961953+03:00", "method":"GET","uri":"/api/v1/banners/user_banner?tag_id=2&feature_id=2&use_last_revision=true", "status":200,"error":""}
+{"time":"2024-04-14T21:22:14.871703+03:00", "method":"GET","uri":"/api/v1/banners/user_banner?tag_id=2&feature_id=2&use_last_revision=false", "status":200,"error":""}
+{"time":"2024-04-14T21:36:57.931765+03:00", "method":"GET","uri":"/", "status":404,"error":"code=404, message=Not Found"}
+{"time":"2024-04-14T21:37:03.582831+03:00", "method":"GET","uri":"/api/v1", "status":404,"error":"code=404, message=Not Found"}
+{"time":"2024-04-14T21:37:18.566169+03:00", "method":"GET","uri":"/api/v1/banners", "status":404,"error":"code=404, message=Not Found"}
+{"time":"2024-04-14T21:37:28.431507+03:00", "method":"GET","uri":"/swagger", "status":404,"error":"code=404, message=Not Found"}
+{"time":"2024-04-14T21:37:29.580756+03:00", "method":"GET","uri":"/swagger", "status":404,"error":"code=404, message=Not Found"}
+{"time":"2024-04-14T21:37:34.857257+03:00", "method":"GET","uri":"/swagger/", "status":301,"error":""}
+{"time":"2024-04-14T21:37:34.868025+03:00", "method":"GET","uri":"/swagger//index.html", "status":200,"error":""}
+{"time":"2024-04-14T21:37:34.883849+03:00", "method":"GET","uri":"/swagger//swagger-ui.css", "status":200,"error":""}
+{"time":"2024-04-14T21:37:34.886238+03:00", "method":"GET","uri":"/swagger//swagger-ui-standalone-preset.js", "status":200,"error":""}
+{"time":"2024-04-14T21:37:34.88679+03:00", "method":"GET","uri":"/swagger//swagger-ui-bundle.js", "status":200,"error":""}
+{"time":"2024-04-14T21:37:34.963411+03:00", "method":"GET","uri":"/swagger//favicon-32x32.png", "status":200,"error":""}
+{"time":"2024-04-14T21:37:34.987797+03:00", "method":"GET","uri":"/swagger//doc.json", "status":500,"error":""}
+{"time":"2024-04-14T21:37:34.996731+03:00", "method":"GET","uri":"/swagger//favicon-32x32.png", "status":200,"error":""}
+{"time":"2024-04-14T21:37:41.390286+03:00", "method":"GET","uri":"/swagger//doc.yaml", "status":500,"error":""}
+{"time":"2024-04-14T21:37:43.809408+03:00", "method":"GET","uri":"/swagger//doc.json", "status":500,"error":""}
+{"time":"2024-04-14T21:39:10.934156+03:00", "method":"GET","uri":"/swagger//index.html?urls.primaryName=doc.json", "status":404,"error":""}
+{"time":"2024-04-14T21:39:13.500183+03:00", "method":"GET","uri":"/swagger", "status":404,"error":"code=404, message=Not Found"}
+{"time":"2024-04-14T21:39:15.660833+03:00", "method":"GET","uri":"/swagger//index.html", "status":200,"error":""}
+{"time":"2024-04-14T21:39:15.6803+03:00", "method":"GET","uri":"/swagger//swagger-ui.css", "status":200,"error":""}
+{"time":"2024-04-14T21:39:15.683252+03:00", "method":"GET","uri":"/swagger//swagger-ui-standalone-preset.js", "status":200,"error":""}
+{"time":"2024-04-14T21:39:15.685112+03:00", "method":"GET","uri":"/swagger//swagger-ui-bundle.js", "status":200,"error":""}
+{"time":"2024-04-14T21:39:15.718316+03:00", "method":"GET","uri":"/swagger//favicon-32x32.png", "status":200,"error":""}
+{"time":"2024-04-14T21:39:15.736688+03:00", "method":"GET","uri":"/swagger//doc.json", "status":500,"error":""}
+{"time":"2024-04-14T21:39:15.740156+03:00", "method":"GET","uri":"/swagger//favicon-32x32.png", "status":200,"error":""}
+{"time":"2024-04-14T21:39:25.399026+03:00", "method":"GET","uri":"/swagger//doc.yaml", "status":500,"error":""}
+{"time":"2024-04-14T21:39:49.990627+03:00", "method":"GET","uri":"/swagger//index.html?urls.primaryName=doc.yaml", "status":404,"error":""}
+{"time":"2024-04-14T21:39:52.791526+03:00", "method":"GET","uri":"/swagger//index.html", "status":200,"error":""}
+{"time":"2024-04-14T21:39:52.809391+03:00", "method":"GET","uri":"/swagger//swagger-ui.css", "status":200,"error":""}
+{"time":"2024-04-14T21:39:52.812838+03:00", "method":"GET","uri":"/swagger//swagger-ui-standalone-preset.js", "status":200,"error":""}
+{"time":"2024-04-14T21:39:52.814961+03:00", "method":"GET","uri":"/swagger//swagger-ui-bundle.js", "status":200,"error":""}
+{"time":"2024-04-14T21:39:52.850641+03:00", "method":"GET","uri":"/swagger//favicon-32x32.png", "status":200,"error":""}
+{"time":"2024-04-14T21:39:52.872077+03:00", "method":"GET","uri":"/swagger//doc.json", "status":500,"error":""}
+{"time":"2024-04-14T21:39:52.876241+03:00", "method":"GET","uri":"/swagger//favicon-32x32.png", "status":200,"error":""}
+{"time":"2024-04-14T21:39:59.981566+03:00", "method":"GET","uri":"/swagger//index.html", "status":200,"error":""}
+{"time":"2024-04-14T21:40:00.013681+03:00", "method":"GET","uri":"/swagger//swagger-ui.css", "status":200,"error":""}
+{"time":"2024-04-14T21:40:00.014255+03:00", "method":"GET","uri":"/swagger//swagger-ui-standalone-preset.js", "status":200,"error":""}
+{"time":"2024-04-14T21:40:00.015429+03:00", "method":"GET","uri":"/swagger//swagger-ui-bundle.js", "status":200,"error":""}
+{"time":"2024-04-14T21:40:00.131777+03:00", "method":"GET","uri":"/swagger//favicon-32x32.png", "status":200,"error":""}
+{"time":"2024-04-14T21:40:00.293152+03:00", "method":"GET","uri":"/swagger//index.html", "status":200,"error":""}
+{"time":"2024-04-14T21:40:00.311454+03:00", "method":"GET","uri":"/swagger//swagger-ui.css", "status":200,"error":""}
+{"time":"2024-04-14T21:40:00.312066+03:00", "method":"GET","uri":"/swagger//swagger-ui-standalone-preset.js", "status":200,"error":""}
+{"time":"2024-04-14T21:40:00.314778+03:00", "method":"GET","uri":"/swagger//swagger-ui-bundle.js", "status":200,"error":""}
+{"time":"2024-04-14T21:40:00.347672+03:00", "method":"GET","uri":"/swagger//favicon-32x32.png", "status":200,"error":""}
+{"time":"2024-04-14T21:40:00.36601+03:00", "method":"GET","uri":"/swagger//doc.json", "status":500,"error":""}
+{"time":"2024-04-14T21:40:25.238073+03:00", "method":"GET","uri":"/health", "status":200,"error":""}
+{"time":"2024-04-14T21:40:39.814011+03:00", "method":"GET","uri":"/swagger//index.html", "status":200,"error":""}
+{"time":"2024-04-14T21:40:39.837976+03:00", "method":"GET","uri":"/swagger//swagger-ui.css", "status":200,"error":""}
+{"time":"2024-04-14T21:40:39.840554+03:00", "method":"GET","uri":"/swagger//swagger-ui-standalone-preset.js", "status":200,"error":""}
+{"time":"2024-04-14T21:40:39.84065+03:00", "method":"GET","uri":"/swagger//swagger-ui-bundle.js", "status":200,"error":""}
+{"time":"2024-04-14T21:40:39.873684+03:00", "method":"GET","uri":"/swagger//favicon-32x32.png", "status":200,"error":""}
+{"time":"2024-04-14T21:40:39.898577+03:00", "method":"GET","uri":"/swagger//doc.json", "status":500,"error":""}
+{"time":"2024-04-14T21:40:43.447745+03:00", "method":"GET","uri":"/swagger//doc.yaml", "status":500,"error":""}
+{"time":"2024-04-14T21:40:54.351751+03:00", "method":"GET","uri":"/swagger//index.html?urls.primaryName=doc.yaml", "status":404,"error":""}
+{"time":"2024-04-14T21:40:56.556356+03:00", "method":"GET","uri":"/swagger//index.html", "status":200,"error":""}
+{"time":"2024-04-14T21:40:56.58616+03:00", "method":"GET","uri":"/swagger//swagger-ui.css", "status":200,"error":""}
+{"time":"2024-04-14T21:40:56.586766+03:00", "method":"GET","uri":"/swagger//swagger-ui-standalone-preset.js", "status":200,"error":""}
+{"time":"2024-04-14T21:40:56.587918+03:00", "method":"GET","uri":"/swagger//swagger-ui-bundle.js", "status":200,"error":""}
+{"time":"2024-04-14T21:40:56.704439+03:00", "method":"GET","uri":"/swagger//favicon-32x32.png", "status":200,"error":""}
+{"time":"2024-04-14T21:40:56.765834+03:00", "method":"GET","uri":"/swagger//doc.json", "status":500,"error":""}
+{"time":"2024-04-14T21:40:56.775666+03:00", "method":"GET","uri":"/swagger//favicon-32x32.png", "status":200,"error":""}
+{"time":"2024-04-14T21:41:13.813739+03:00", "method":"GET","uri":"/swagger//index.html", "status":200,"error":""}
+{"time":"2024-04-14T21:41:13.846296+03:00", "method":"GET","uri":"/swagger//swagger-ui.css", "status":200,"error":""}
+{"time":"2024-04-14T21:41:13.84644+03:00", "method":"GET","uri":"/swagger//swagger-ui-standalone-preset.js", "status":200,"error":""}
+{"time":"2024-04-14T21:41:13.847785+03:00", "method":"GET","uri":"/swagger//swagger-ui-bundle.js", "status":200,"error":""}
+{"time":"2024-04-14T21:41:13.966712+03:00", "method":"GET","uri":"/swagger//favicon-32x32.png", "status":200,"error":""}
+{"time":"2024-04-14T21:41:14.042877+03:00", "method":"GET","uri":"/swagger//index.html", "status":200,"error":""}
+{"time":"2024-04-14T21:41:14.059469+03:00", "method":"GET","uri":"/swagger//swagger-ui.css", "status":200,"error":""}
+{"time":"2024-04-14T21:41:14.060012+03:00", "method":"GET","uri":"/swagger//swagger-ui-standalone-preset.js", "status":200,"error":""}
+{"time":"2024-04-14T21:41:14.061046+03:00", "method":"GET","uri":"/swagger//swagger-ui-bundle.js", "status":200,"error":""}
+{"time":"2024-04-14T21:41:14.095325+03:00", "method":"GET","uri":"/swagger//favicon-32x32.png", "status":200,"error":""}
+{"time":"2024-04-14T21:41:14.114792+03:00", "method":"GET","uri":"/swagger//doc.json", "status":500,"error":""}
+{"time":"2024-04-14T21:41:37.325412+03:00", "method":"GET","uri":"/swagger//doc.yaml", "status":500,"error":""}
+{"time":"2024-04-14T21:41:40.061885+03:00", "method":"GET","uri":"/swagger//index.html", "status":200,"error":""}
+{"time":"2024-04-14T21:41:40.094314+03:00", "method":"GET","uri":"/swagger//swagger-ui.css", "status":200,"error":""}
+{"time":"2024-04-14T21:41:40.094516+03:00", "method":"GET","uri":"/swagger//swagger-ui-standalone-preset.js", "status":200,"error":""}
+{"time":"2024-04-14T21:41:40.095371+03:00", "method":"GET","uri":"/swagger//swagger-ui-bundle.js", "status":200,"error":""}
+{"time":"2024-04-14T21:41:40.215099+03:00", "method":"GET","uri":"/swagger//favicon-32x32.png", "status":200,"error":""}
+{"time":"2024-04-14T21:41:40.259838+03:00", "method":"GET","uri":"/swagger//index.html", "status":200,"error":""}
+{"time":"2024-04-14T21:41:40.27498+03:00", "method":"GET","uri":"/swagger//swagger-ui.css", "status":200,"error":""}
+{"time":"2024-04-14T21:41:40.275957+03:00", "method":"GET","uri":"/swagger//swagger-ui-standalone-preset.js", "status":200,"error":""}
+{"time":"2024-04-14T21:41:40.277992+03:00", "method":"GET","uri":"/swagger//swagger-ui-bundle.js", "status":200,"error":""}
+{"time":"2024-04-14T21:41:40.311338+03:00", "method":"GET","uri":"/swagger//favicon-32x32.png", "status":200,"error":""}
+{"time":"2024-04-14T21:41:40.329924+03:00", "method":"GET","uri":"/swagger//doc.json", "status":500,"error":""}
+{"time":"2024-04-14T21:41:42.075233+03:00", "method":"GET","uri":"/swagger//doc.yaml", "status":500,"error":""}
+{"time":"2024-04-14T21:41:51.43011+03:00", "method":"GET","uri":"/swagger//index.html", "status":200,"error":""}
+{"time":"2024-04-14T21:41:51.463348+03:00", "method":"GET","uri":"/swagger//swagger-ui.css", "status":200,"error":""}
+{"time":"2024-04-14T21:41:51.463803+03:00", "method":"GET","uri":"/swagger//swagger-ui-standalone-preset.js", "status":200,"error":""}
+{"time":"2024-04-14T21:41:51.465095+03:00", "method":"GET","uri":"/swagger//swagger-ui-bundle.js", "status":200,"error":""}
+{"time":"2024-04-14T21:41:51.581852+03:00", "method":"GET","uri":"/swagger//favicon-32x32.png", "status":200,"error":""}
+{"time":"2024-04-14T21:41:51.64828+03:00", "method":"GET","uri":"/swagger//index.html", "status":200,"error":""}
+{"time":"2024-04-14T21:41:51.66803+03:00", "method":"GET","uri":"/swagger//swagger-ui.css", "status":200,"error":""}
+{"time":"2024-04-14T21:41:51.670637+03:00", "method":"GET","uri":"/swagger//swagger-ui-standalone-preset.js", "status":200,"error":""}
+{"time":"2024-04-14T21:41:51.671584+03:00", "method":"GET","uri":"/swagger//swagger-ui-bundle.js", "status":200,"error":""}
+{"time":"2024-04-14T21:41:51.69842+03:00", "method":"GET","uri":"/swagger//favicon-32x32.png", "status":200,"error":""}
+{"time":"2024-04-14T21:41:51.716589+03:00", "method":"GET","uri":"/swagger//doc.json", "status":500,"error":""}
+{"time":"2024-04-14T21:41:53.923385+03:00", "method":"GET","uri":"/swagger//doc.yaml", "status":500,"error":""}
+{"time":"2024-04-14T21:42:57.771546+03:00", "method":"GET","uri":"/api/v1/banners/user_banner?tag_id=2&feature_id=2&use_last_revision=false", "status":200,"error":""}
+{"time":"2024-04-14T21:43:02.014188+03:00", "method":"GET","uri":"/api/v1/banners/user_banner?tag_id=2&feature_id=2&use_last_revision=true", "status":200,"error":""}
+{"time":"2024-04-14T22:44:09.135961+03:00", "method":"GET","uri":"/api/v1/banners/user_banner?tag_id=2&feature_id=2&use_last_revision=true", "status":200,"error":""}
+{"time":"2024-04-14T22:58:38.102233+03:00", "method":"POST","uri":"/api/v1/banners/", "status":400,"error":"code=415, message=Unsupported Media Type"}
+{"time":"2024-04-14T22:58:59.821663+03:00", "method":"POST","uri":"/api/v1/banners/", "status":400,"error":"code=415, message=Unsupported Media Type"}
+{"time":"2024-04-14T22:59:52.72012+03:00", "method":"POST","uri":"/api/v1/banners/", "status":400,"error":"code=415, message=Unsupported Media Type"}
+{"time":"2024-04-14T23:00:43.478847+03:00", "method":"POST","uri":"/api/v1/banners/", "status":400,"error":"code=415, message=Unsupported Media Type"}
+{"time":"2024-04-14T23:01:24.152657+03:00", "method":"POST","uri":"/api/v1/banners/", "status":400,"error":"code=415, message=Unsupported Media Type"}
+{"time":"2024-04-14T23:02:53.011964+03:00", "method":"POST","uri":"/api/v1/banners/", "status":400,"error":"code=415, message=Unsupported Media Type"}
+{"time":"2024-04-14T23:02:57.947066+03:00", "method":"POST","uri":"/api/v1/banners/", "status":400,"error":"code=415, message=Unsupported Media Type"}
+{"time":"2024-04-14T23:03:55.183114+03:00", "method":"POST","uri":"/api/v1/banners/", "status":400,"error":"code=415, message=Unsupported Media Type"}
+{"time":"2024-04-14T23:05:32.761901+03:00", "method":"POST","uri":"/api/v1/banners/", "status":400,"error":"code=415, message=Unsupported Media Type"}
+{"time":"2024-04-14T23:05:37.464725+03:00", "method":"POST","uri":"/api/v1/banners/", "status":400,"error":"code=415, message=Unsupported Media Type"}
+{"time":"2024-04-14T23:05:56.598968+03:00", "method":"POST","uri":"/api/v1/banners/", "status":500,"error":"BannerRepository.CreateBanner - failed to execute SQL query: ERROR: null value in column \"tag_id\" of relation \"banners\" violates not-null constraint (SQLSTATE 23502)"}
+{"time":"2024-04-14T23:06:04.575597+03:00", "method":"POST","uri":"/api/v1/banners/", "status":400,"error":"code=415, message=Unsupported Media Type"}
+{"time":"2024-04-14T23:07:05.972296+03:00", "method":"POST","uri":"/api/v1/banners/", "status":400,"error":"code=415, message=Unsupported Media Type"}
+{"time":"2024-04-14T23:11:37.557739+03:00", "method":"POST","uri":"/api/v1/banners/banner", "status":405,"error":"code=405, message=Method Not Allowed"}
+{"time":"2024-04-14T23:11:52.929053+03:00", "method":"POST","uri":"/api/v1/banners/banner", "status":405,"error":"code=405, message=Method Not Allowed"}
+{"time":"2024-04-14T23:12:02.977821+03:00", "method":"GET","uri":"/api/v1/banners/banner", "status":200,"error":""}
+{"time":"2024-04-14T23:22:07.644519+03:00", "method":"DELETE","uri":"/api/v1/banners/", "status":204,"error":""}
+{"time":"2024-04-14T23:22:33.332064+03:00", "method":"GET","uri":"/api/v1/banners/banner", "status":200,"error":""}

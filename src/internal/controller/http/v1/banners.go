@@ -119,9 +119,9 @@ type createBannerInput struct {
 	Title string `json:"title"`
 	Text string `json:"text"`
 	Url string `json:"url"`
-	FeatureId int `json:"feature"`
-	TagId []int `json:"tag"`
-	IsActive bool `json:"active"`
+	FeatureId int `json:"feature_id"`
+	TagId []int `json:"tag_id"`
+	IsActive bool `json:"is_active"`
 }
 
 func (b *bannerRoutes) create(c echo.Context) error {
