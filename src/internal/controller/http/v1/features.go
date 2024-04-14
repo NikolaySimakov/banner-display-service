@@ -9,11 +9,13 @@ import (
 
 type featureRoutes struct {
 	featureService services.Feature
+	authService services.Auth
 }
 
-func newFeatureRoutes(g *echo.Group, featureService services.Feature) {
+func newFeatureRoutes(g *echo.Group, featureService services.Feature, authService services.Auth) {
 	r := featureRoutes{
 		featureService: featureService,
+		authService: authService,
 	}
 	g.POST("/", r.create)
 	g.DELETE("/", r.delete)
@@ -29,6 +31,21 @@ type createFeatureResponse struct {
 }
 
 func (f *featureRoutes) create(c echo.Context) error {
+
+	// check admin token
+	token := c.Request().Header.Get("token")
+	if token == "" {
+		newErrorResponse(c, http.StatusInternalServerError, ErrCannotParseToken.Error())
+		return ErrCannotParseToken
+	}
+
+	userStatus, err := f.authService.TokenExist(c.Request().Context(), token)
+	if err != nil || userStatus != "admin" {
+		newErrorResponse(c, http.StatusInternalServerError, ErrInvalidAuthHeader.Error())
+		return ErrInvalidAuthHeader
+	}
+
+	// create feature 
 	var input createFeatureInput
 
 	if err := c.Bind(&input); err != nil {
@@ -41,7 +58,7 @@ func (f *featureRoutes) create(c echo.Context) error {
 		return err
 	}
 
-	err := f.featureService.CreateFeature(c.Request().Context(), services.FeatureInput{
+	err = f.featureService.CreateFeature(c.Request().Context(), services.FeatureInput{
 		Name: input.Name,
 	})
 
@@ -61,7 +78,21 @@ type deleteFeatureInput struct {
 }
 
 func (f *featureRoutes) delete(c echo.Context) error {
+
+	// check admin token
+	token := c.Request().Header.Get("token")
+	if token == "" {
+		newErrorResponse(c, http.StatusInternalServerError, ErrCannotParseToken.Error())
+		return ErrCannotParseToken
+	}
+
+	userStatus, err := f.authService.TokenExist(c.Request().Context(), token)
+	if err != nil || userStatus != "admin" {
+		newErrorResponse(c, http.StatusInternalServerError, ErrInvalidAuthHeader.Error())
+		return ErrInvalidAuthHeader
+	}
 	
+	// delete feature
 	var input deleteFeatureInput
 
 	if err := c.Bind(&input); err != nil {
@@ -74,7 +105,7 @@ func (f *featureRoutes) delete(c echo.Context) error {
 		return err
 	}
 
-	err := f.featureService.DeleteFeature(c.Request().Context(), services.FeatureInput{
+	err = f.featureService.DeleteFeature(c.Request().Context(), services.FeatureInput{
 		Name: input.Name,
 	})
 

@@ -19,16 +19,23 @@ type Feature interface {
 
 type Banner interface {
 	GetAllBanners(ctx context.Context) ([]models.BannerResponse, error)
+	GetAllActiveBanners(ctx context.Context) ([]models.BannerResponse, error)
 	GetUserBanner(ctx context.Context, bannerId int) error
 	CreateBanner(ctx context.Context, banner *models.CreateBannerInput) error
 	UpdateBanner(ctx context.Context, tag int, feature int) error
 	DeleteBanner(ctx context.Context, featureId int, tagId int) error
 }
 
+type Auth interface {
+	WriteToken(ctx context.Context, token string, userStatus string) (int, error)
+	TokenExist(ctx context.Context, token string) (string, error)
+}
+
 type Repositories struct {
 	Tag
 	Feature
 	Banner
+	Auth
 }
 
 func NewRepositories(pg *postgres.Postgres) *Repositories {
@@ -36,5 +43,6 @@ func NewRepositories(pg *postgres.Postgres) *Repositories {
 		Tag:       db.NewTagRepo(pg),
 		Feature:    db.NewFeatureRepo(pg),
 		Banner:    db.NewBannerRepo(pg),
+		Auth:       db.NewAuthRepo(pg),
 	}
 }

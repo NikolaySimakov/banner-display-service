@@ -55,6 +55,42 @@ func (br *BannerRepository) GetAllBanners(ctx context.Context) ([]models.BannerR
 	return banners, nil
 }
 
+func (br *BannerRepository) GetAllActiveBanners(ctx context.Context) ([]models.BannerResponse, error) {
+	sql, args, _ := br.Builder.
+		Select("id", "title", "text", "url", "created_at", "updated_at", 
+		"last_version", "is_active", "tag_id", "feature_id").
+		From("banners").
+		Where("is_active = true").
+		ToSql()
+
+	rows, err := br.Pool.Query(ctx, sql, args...)
+	if err != nil {
+		return nil, fmt.Errorf("BannerRepository.GetAllBanners - r.Pool.Query: %v", err)
+	}
+	defer rows.Close()
+
+	banners := make([]models.BannerResponse, 0, 1)
+	for rows.Next() {
+		banner := models.BannerResponse{}
+		err = rows.Scan(
+			&banner.Id, 
+			&banner.Title,
+			&banner.Text, 
+			&banner.Url, 
+			&banner.CreatedAt, 
+			&banner.UpdatedAt, 
+			&banner.LastVersion, 
+			&banner.IsActive,
+			&banner.TagId,
+			&banner.FeatureId)
+		if err != nil {
+			return nil, fmt.Errorf("BannerRepository.GetAllBanners - rows.Scan: %v", err)
+		}
+		banners = append(banners, banner)
+	}
+	return banners, nil
+}
+
 func (br *BannerRepository) GetUserBanner(ctx context.Context, bannerId int) error {
 	// TODO
 	return nil

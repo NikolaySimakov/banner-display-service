@@ -16,10 +16,16 @@ func NewBannerService(bannerRepo repositories.Banner) *BannerService {
 	}
 }
 
-func (bs *BannerService) GetAllBanners(ctx context.Context) ([]models.BannerResponse, error) {
-	banners, err := bs.bannerRepo.GetAllBanners(ctx)
+func (bs *BannerService) GetAllBanners(ctx context.Context, userStatus string) ([]models.BannerResponse, error) {
 
-	// check is_active condition
+	var banners []models.BannerResponse
+	var err error
+
+	if userStatus == "admin" {
+		banners, err = bs.bannerRepo.GetAllBanners(ctx)
+	} else if userStatus == "user" {
+		banners, err = bs.bannerRepo.GetAllActiveBanners(ctx)
+	}
 
 	if err != nil {
 		return nil, err
@@ -52,6 +58,6 @@ func (bs *BannerService) DeleteBanner(ctx context.Context, featureId int, tagId 
 	if err != nil {
 		return err
 	}
-	
+
 	return nil
 }

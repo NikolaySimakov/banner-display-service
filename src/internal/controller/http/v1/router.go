@@ -19,13 +19,12 @@ func NewRouter(handler *echo.Echo, services *services.Services) {
 	handler.GET("/health", func(c echo.Context) error { return c.NoContent(200) })
 	// handler.GET("/swagger/*", echoSwagger.WrapHandler)
 
-	// authMiddleware := &AuthMiddleware{services.Auth}
-	// v1 := handler.Group("/api/v1", authMiddleware.UserIdentity)
 	v1 := handler.Group("/api/v1")
 	{
-		newTagRoutes(v1.Group("/tags"), services.Tag)
-		newFeatureRoutes(v1.Group("/features"), services.Feature)
-		newBannerRoutes(v1.Group("/banners"), services.Banner)
+		newAuthRoutes(v1.Group("/auth"), services.Auth)
+		newTagRoutes(v1.Group("/tags"), services.Tag, services.Auth)
+		newFeatureRoutes(v1.Group("/features"), services.Feature, services.Auth)
+		newBannerRoutes(v1.Group("/banners"), services.Banner, services.Auth)
 	}
 }
 

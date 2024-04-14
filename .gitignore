@@ -4,6 +4,7 @@ TODO.md
 
 # sql
 src/migrations/get.sql
+src/migrations/set.sql
 
 # editor
 .vscode/

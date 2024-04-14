@@ -7,6 +7,7 @@ import (
 	"banner-display-service/src/internal/services"
 	"banner-display-service/src/pkg/httpserver"
 	"banner-display-service/src/pkg/postgres"
+	"banner-display-service/src/pkg/secure"
 	"banner-display-service/src/pkg/validator"
 	"fmt"
 	"os"
@@ -45,6 +46,7 @@ func Run(configPath string) {
 	log.Info("Initializing services")
 	deps := services.ServicesDependencies{
 		Repos:     repositories,
+		APISecure: secure.NewSecure(cfg.Salt),
 	}
 	services := services.NewServices(deps)
 

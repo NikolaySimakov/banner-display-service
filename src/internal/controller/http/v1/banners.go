@@ -10,27 +10,47 @@ import (
 
 type bannerRoutes struct {
 	bannerService services.Banner
+	authService services.Auth
 }
 
-func newBannerRoutes(g *echo.Group, bannerService services.Banner) {
+func newBannerRoutes(g *echo.Group, bannerService services.Banner, authService services.Auth) {
 	r := bannerRoutes{
 		bannerService: bannerService,
+		authService: authService,
 	}
 	g.GET("/", r.readAll)
+	g.GET("/:id", r.read)
 	g.POST("/", r.create)
 	g.DELETE("/", r.delete)
 }
 
 
 func (b *bannerRoutes) readAll(c echo.Context) error {
-	banners, err := b.bannerService.GetAllBanners(c.Request().Context())
 
+	// token := c.QueryParam("token")
+	token := c.Request().Header.Get("token")
+	if token == "" {
+		newErrorResponse(c, http.StatusInternalServerError, ErrCannotParseToken.Error())
+		return ErrCannotParseToken
+	}
+
+	userStatus, err := b.authService.TokenExist(c.Request().Context(), token)
+	if err != nil || !(userStatus == "admin" || userStatus == "user") {
+		newErrorResponse(c, http.StatusInternalServerError, ErrInvalidAuthHeader.Error())
+		return ErrInvalidAuthHeader
+	}
+
+	banners, err := b.bannerService.GetAllBanners(c.Request().Context(), userStatus)
 	if err != nil {
 		newErrorResponse(c, http.StatusInternalServerError, "internal server error")
 		return err
 	}
 
 	return c.JSON(http.StatusOK, banners)
+}
+
+func (b *bannerRoutes) read(c echo.Context) error {
+	return nil
 }
 
 type createBannerInput struct {
@@ -43,6 +63,21 @@ type createBannerInput struct {
 }
 
 func (b *bannerRoutes) create(c echo.Context) error {
+
+	// check admin token
+	token := c.Request().Header.Get("token")
+	if token == "" {
+		newErrorResponse(c, http.StatusInternalServerError, ErrCannotParseToken.Error())
+		return ErrCannotParseToken
+	}
+
+	userStatus, err := b.authService.TokenExist(c.Request().Context(), token)
+	if err != nil || userStatus != "admin" {
+		newErrorResponse(c, http.StatusInternalServerError, ErrInvalidAuthHeader.Error())
+		return ErrInvalidAuthHeader
+	}
+
+	// create banner
 	var input createBannerInput
 
 	if err := c.Bind(&input); err != nil {
@@ -55,7 +90,7 @@ func (b *bannerRoutes) create(c echo.Context) error {
 		return err
 	}
 
-	err := b.bannerService.CreateBanner(c.Request().Context(), &models.CreateBannerInput{
+	err = b.bannerService.CreateBanner(c.Request().Context(), &models.CreateBannerInput{
 		Title: input.Title,
 		Text: input.Text,
 		Url: input.Url,
@@ -79,6 +114,21 @@ type deleteBannerInput struct {
 }
 
 func (b *bannerRoutes) delete(c echo.Context) error {
+
+	// check admin token
+	token := c.Request().Header.Get("token")
+	if token == "" {
+		newErrorResponse(c, http.StatusInternalServerError, ErrCannotParseToken.Error())
+		return ErrCannotParseToken
+	}
+
+	userStatus, err := b.authService.TokenExist(c.Request().Context(), token)
+	if err != nil || userStatus != "admin" {
+		newErrorResponse(c, http.StatusInternalServerError, ErrInvalidAuthHeader.Error())
+		return ErrInvalidAuthHeader
+	}
+
+	// delete banner
 	var input deleteBannerInput
 
 	if err := c.Bind(&input); err != nil {
@@ -91,8 +141,7 @@ func (b *bannerRoutes) delete(c echo.Context) error {
 		return err
 	}
 
-	err := b.bannerService.DeleteBanner(c.Request().Context(), input.FeatureId, input.TagId)
-
+	err = b.bannerService.DeleteBanner(c.Request().Context(), input.FeatureId, input.TagId)
 	if err != nil {
 		newErrorResponse(c, http.StatusInternalServerError, "internal server error")
 		return err

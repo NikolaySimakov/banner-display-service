@@ -21,9 +21,17 @@ CREATE TABLE banners (
 		feature_id INTEGER NOT NULL
 );
 
+CREATE TABLE api_keys (
+    id SERIAL PRIMARY KEY,
+    hash_key VARCHAR,
+		user_status VARCHAR(15)
+);
+
+
+DROP TABLE api_keys;
 
 DROP TABLE banners;
 
-drop table tags;
+DROP TABLE tags;
 
-drop table features;
+DROP TABLE features;

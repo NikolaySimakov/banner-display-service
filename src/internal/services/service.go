@@ -3,6 +3,7 @@ package services
 import (
 	"banner-display-service/src/internal/models"
 	"banner-display-service/src/internal/repositories"
+	"banner-display-service/src/pkg/secure"
 	"context"
 )
 
@@ -11,7 +12,7 @@ type BannerInput struct {
 }
 
 type Banner interface {
-	GetAllBanners(ctx context.Context) ([]models.BannerResponse, error)
+	GetAllBanners(ctx context.Context, userStatus string) ([]models.BannerResponse, error)
 	GetUserBanner(ctx context.Context, input BannerInput) error
 	CreateBanner(ctx context.Context, input *models.CreateBannerInput) error
 	UpdateBanner(ctx context.Context, input BannerInput) error
@@ -36,14 +37,21 @@ type Feature interface {
 	DeleteFeature(ctx context.Context, input FeatureInput) error
 }
 
+type Auth interface {
+	TokenExist(ctx context.Context, token string) (string, error)
+	GenerateToken(ctx context.Context, userStatus string) (int, string, error)
+}
+
 type Services struct {
 	Banner
 	Tag
 	Feature
+	Auth
 }
 
 type ServicesDependencies struct {
 	Repos     *repositories.Repositories
+	APISecure secure.APISecure
 }
 
 func NewServices(deps ServicesDependencies) *Services {
@@ -51,5 +59,6 @@ func NewServices(deps ServicesDependencies) *Services {
 		Banner: NewBannerService(deps.Repos.Banner),
 		Feature: NewFeatureService(deps.Repos.Feature),
 		Tag: NewTagService(deps.Repos.Tag),
+		Auth: NewAuthService(deps.Repos.Auth, deps.APISecure),
 	}
 }

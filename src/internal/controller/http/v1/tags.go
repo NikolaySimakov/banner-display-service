@@ -9,11 +9,13 @@ import (
 
 type tagRoutes struct {
 	tagService services.Tag
+	authService services.Auth
 }
 
-func newTagRoutes(g *echo.Group, tagService services.Tag) {
+func newTagRoutes(g *echo.Group, tagService services.Tag, authService services.Auth) {
 	r := tagRoutes{
 		tagService: tagService,
+		authService: authService,
 	}
 	g.POST("/", r.create)
 	g.DELETE("/", r.delete)
@@ -29,6 +31,21 @@ type createTagResponse struct {
 }
 
 func (t *tagRoutes) create(c echo.Context) error {
+
+	// check admin token
+	token := c.Request().Header.Get("token")
+	if token == "" {
+		newErrorResponse(c, http.StatusInternalServerError, ErrCannotParseToken.Error())
+		return ErrCannotParseToken
+	}
+
+	userStatus, err := t.authService.TokenExist(c.Request().Context(), token)
+	if err != nil || userStatus != "admin" {
+		newErrorResponse(c, http.StatusInternalServerError, ErrInvalidAuthHeader.Error())
+		return ErrInvalidAuthHeader
+	}
+
+	// create tag
 	var input createTagInput
 
 	if err := c.Bind(&input); err != nil {
@@ -41,7 +58,7 @@ func (t *tagRoutes) create(c echo.Context) error {
 		return err
 	}
 
-	err := t.tagService.CreateTag(c.Request().Context(), services.TagInput{
+	err = t.tagService.CreateTag(c.Request().Context(), services.TagInput{
 		Name: input.Name,
 	})
 
@@ -62,6 +79,20 @@ type deleteTagInput struct {
 
 func (t *tagRoutes) delete(c echo.Context) error {
 
+	// check admin token
+	token := c.Request().Header.Get("token")
+	if token == "" {
+		newErrorResponse(c, http.StatusInternalServerError, ErrCannotParseToken.Error())
+		return ErrCannotParseToken
+	}
+
+	userStatus, err := t.authService.TokenExist(c.Request().Context(), token)
+	if err != nil || userStatus != "admin" {
+		newErrorResponse(c, http.StatusInternalServerError, ErrInvalidAuthHeader.Error())
+		return ErrInvalidAuthHeader
+	}
+
+	// delete tag
 	var input deleteTagInput
 
 	if err := c.Bind(&input); err != nil {
@@ -74,7 +105,7 @@ func (t *tagRoutes) delete(c echo.Context) error {
 		return err
 	}
 
-	err := t.tagService.DeleteTag(c.Request().Context(), services.TagInput{
+	err = t.tagService.DeleteTag(c.Request().Context(), services.TagInput{
 		Name: input.Name,
 	})
 
