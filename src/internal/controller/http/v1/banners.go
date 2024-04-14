@@ -72,6 +72,31 @@ func (b *bannerRoutes) create(c echo.Context) error {
 	return nil
 }
 
+
+type deleteBannerInput struct {
+	FeatureId int `json:"feature_id"`
+	TagId int `json:"tag_id"`
+}
+
 func (b *bannerRoutes) delete(c echo.Context) error {
-	return nil
+	var input deleteBannerInput
+
+	if err := c.Bind(&input); err != nil {
+		newErrorResponse(c, http.StatusBadRequest, "invalid request body")
+		return err
+	}
+
+	if err := c.Validate(input); err != nil {
+		newErrorResponse(c, http.StatusBadRequest, err.Error())
+		return err
+	}
+
+	err := b.bannerService.DeleteBanner(c.Request().Context(), input.FeatureId, input.TagId)
+
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, "internal server error")
+		return err
+	}
+
+	return c.NoContent(204)
 }

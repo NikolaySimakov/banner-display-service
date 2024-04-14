@@ -72,7 +72,6 @@ func (br *BannerRepository) CreateBanner(ctx context.Context, banner *models.Cre
         return fmt.Errorf("BannerRepository.CreateBanner - failed to build SQL query: %v", err)
     }
 
-		// Execute the query
     _, err = br.Pool.Exec(ctx, sql, args...)
     if err != nil {
         if errors.Is(err, pgx.ErrNoRows) {
@@ -97,7 +96,20 @@ func (br *BannerRepository) UpdateBanner(ctx context.Context, tag int, feature i
 	return nil
 }
 
-func (br *BannerRepository) DeleteBanner(ctx context.Context) error {
-	// TODO
+func (br *BannerRepository) DeleteBanner(ctx context.Context, featureId int, tagId int) error {
+	sql, args, _ := br.Builder.
+		Delete("banners").
+		Where("feature_id = ? AND ? = ANY(tag_id)", featureId, tagId).
+		ToSql()
+
+	commandTag, err := br.Pool.Exec(ctx, sql, args...)
+	if err != nil {
+			return fmt.Errorf("BannerRepository.DeleteBanner - br.Pool.Exec: %v", err)
+	}
+
+	if commandTag.RowsAffected() == 0 {
+			return errs.ErrNotFound
+	}
+
 	return nil
 }

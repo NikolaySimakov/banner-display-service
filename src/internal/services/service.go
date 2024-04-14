@@ -15,7 +15,7 @@ type Banner interface {
 	GetUserBanner(ctx context.Context, input BannerInput) error
 	CreateBanner(ctx context.Context, input *models.CreateBannerInput) error
 	UpdateBanner(ctx context.Context, input BannerInput) error
-	DeleteBanner(ctx context.Context, input BannerInput) error
+	DeleteBanner(ctx context.Context, featureId int, tagId int) error
 }
 
 type TagInput struct {

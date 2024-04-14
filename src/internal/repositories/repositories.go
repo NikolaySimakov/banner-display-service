@@ -22,7 +22,7 @@ type Banner interface {
 	GetUserBanner(ctx context.Context, bannerId int) error
 	CreateBanner(ctx context.Context, banner *models.CreateBannerInput) error
 	UpdateBanner(ctx context.Context, tag int, feature int) error
-	DeleteBanner(ctx context.Context) error
+	DeleteBanner(ctx context.Context, featureId int, tagId int) error
 }
 
 type Repositories struct {

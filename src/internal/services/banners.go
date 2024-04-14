@@ -19,6 +19,8 @@ func NewBannerService(bannerRepo repositories.Banner) *BannerService {
 func (bs *BannerService) GetAllBanners(ctx context.Context) ([]models.BannerResponse, error) {
 	banners, err := bs.bannerRepo.GetAllBanners(ctx)
 
+	// check is_active condition
+
 	if err != nil {
 		return nil, err
 	}
@@ -44,6 +46,12 @@ func (bs *BannerService) UpdateBanner(ctx context.Context, input BannerInput) er
 	return nil
 }
 
-func (bs *BannerService) DeleteBanner(ctx context.Context, input BannerInput) error {
+func (bs *BannerService) DeleteBanner(ctx context.Context, featureId int, tagId int) error {
+	err := bs.bannerRepo.DeleteBanner(ctx, featureId, tagId)
+
+	if err != nil {
+		return err
+	}
+	
 	return nil
 }
