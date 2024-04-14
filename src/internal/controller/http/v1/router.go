@@ -2,11 +2,12 @@ package v1
 
 import (
 	"banner-display-service/src/internal/services"
-	"log"
 	"os"
 
-	"github.com/labstack/echo"
-	"github.com/labstack/echo/middleware"
+	log "github.com/sirupsen/logrus"
+
+	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
 )
 
 func NewRouter(handler *echo.Echo, services *services.Services) {

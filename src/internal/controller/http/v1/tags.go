@@ -4,7 +4,7 @@ import (
 	"banner-display-service/src/internal/services"
 	"net/http"
 
-	"github.com/labstack/echo"
+	"github.com/labstack/echo/v4"
 )
 
 type tagRoutes struct {
